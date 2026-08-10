@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SPEAKFIX — Voice-Powered Maintenance Intake</title>
+<meta name="description" content="SPEAKFIX turns spoken maintenance reports into instant, AI-generated tickets. A SAIT INTP302 capstone project.">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="#hero" class="nav__logo">SPEAKFIX</a>
+    <nav class="nav__links">
+      <a href="#how-it-works">How it works</a>
+      <a href="#inside">Inside</a>
+      <a href="#enclosure">Enclosure</a>
+      <a href="#built-with">Built with</a>
+      <a href="#team">Team</a>
+    </nav>
+    <a class="nav__github" href="#" data-github-link aria-label="View source on GitHub">
+      <svg viewBox="0 0 16 16" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+      <span>GitHub</span>
+    </a>
+    <button class="nav__toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero" id="hero">
+  <div class="hero__bg" aria-hidden="true"></div>
+  <div class="hero__content">
+    <p class="hero__eyebrow reveal">SAIT · INTP302 Capstone</p>
+    <h1 class="hero__title reveal">SPEAK<span class="accent-yellow">FIX</span></h1>
+    <p class="hero__tagline reveal">A device that turns spoken maintenance reports into instant, AI-generated tickets.</p>
+    <div class="hero__cta reveal">
+      <a href="#how-it-works" class="btn btn--primary">See how it works</a>
+      <a href="#enclosure" class="btn btn--ghost">View the hardware</a>
+    </div>
+  </div>
+
+  <div class="hero__media reveal">
+    <div class="media-frame media-frame--wide" data-placeholder
+         data-filename="hero-kiosk.png"
+         data-label="Kiosk — full device, front-on photo">
+      <img src="images/hero-kiosk.png" alt="SPEAKFIX kiosk device, front view" loading="lazy">
+    </div>
+  </div>
+
+  <a href="#how-it-works" class="hero__scroll-cue" aria-label="Scroll down">
+    <span></span>
+  </a>
+</section>
+
+<!-- ===================== HOW IT WORKS ===================== -->
+<section class="section section--light" id="how-it-works">
+  <div class="section__inner">
+    <p class="eyebrow reveal">The workflow</p>
+    <h2 class="section__title reveal">From spoken word to ticket, in seconds.</h2>
+    <p class="section__lede reveal">No app to open, no form to fill out. Just talk.</p>
+
+    <ol class="steps">
+      <li class="step reveal">
+        <span class="step__num">01</span>
+        <div class="step__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><rect x="19" y="6" width="10" height="22" rx="5" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M13 21v3a11 11 0 0 0 22 0v-3" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M24 35v7M17 42h14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Record</h3>
+        <p>A technician presses the keypad and speaks the issue naturally into the USB-C lavalier microphone.</p>
+      </li>
+      <li class="step reveal">
+        <span class="step__num">02</span>
+        <div class="step__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><rect x="6" y="10" width="36" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M13 20h10M13 26h16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M24 38v4M17 42h14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Transcribe at the edge</h3>
+        <p>Speech-to-text runs locally on the Raspberry Pi 4 — audio is converted to text on-device before anything leaves the kiosk.</p>
+      </li>
+      <li class="step reveal">
+        <span class="step__num">03</span>
+        <div class="step__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><circle cx="24" cy="18" r="9" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M24 4v3M24 29v3M8 18h3M37 18h3M12.5 6.5l2 2M33.5 6.5l-2 2" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M12 42c1.5-6 6-9 12-9s10.5 3 12 9" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+        </div>
+        <h3>AI extracts details</h3>
+        <p>The transcript is sent to an AI model on Azure / Microsoft Foundry, which pulls out asset, location, issue type, and priority.</p>
+      </li>
+      <li class="step reveal">
+        <span class="step__num">04</span>
+        <div class="step__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><rect x="8" y="8" width="24" height="30" rx="2" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M14 16h12M14 22h12M14 28h8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M30 30l7 7m0 0v-6m0 6h-6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Ticket routed to owner</h3>
+        <p>A structured maintenance ticket is generated automatically and routed straight to the responsible owner — no dispatcher required.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ===================== INSIDE THE DEVICE ===================== -->
+<section class="section section--dark" id="inside">
+  <div class="section__inner">
+    <p class="eyebrow reveal">Hardware</p>
+    <h2 class="section__title reveal">Inside the device.</h2>
+    <p class="section__lede reveal">A compact stack of off-the-shelf components does all the work — no proprietary silicon required.</p>
+
+    <div class="cutaway reveal">
+      <div class="cutaway__image-wrap">
+        <div class="media-frame media-frame--tall" data-placeholder
+             data-filename="hardware-cutaway.png"
+             data-label="Hardware cutaway — labeled internal photo">
+          <img src="images/hardware-cutaway.png" alt="SPEAKFIX internal hardware layout" loading="lazy" id="cutawayImg">
+          <div class="callouts" id="callouts">
+            <button class="callout" style="--x:50.5%; --y:9.5%" data-target="c1" aria-label="LCD display"><span>1</span></button>
+            <button class="callout" style="--x:23%; --y:29%" data-target="c2" aria-label="Raspberry Pi 4"><span>2</span></button>
+            <button class="callout" style="--x:60%; --y:63%" data-target="c3" aria-label="Keypad"><span>3</span></button>
+            <button class="callout" style="--x:21%; --y:89%" data-target="c4" aria-label="Speaker"><span>4</span></button>
+            <button class="callout" style="--x:92%; --y:55%" data-target="c5" aria-label="USB-C lavalier microphone"><span>5</span></button>
+          </div>
+        </div>
+      </div>
+
+      <ul class="cutaway__legend">
+        <li id="c1"><span class="legend__num">1</span><div><h4>LCD display</h4><p>Shows live transcription and ticket status.</p></div></li>
+        <li id="c2"><span class="legend__num">2</span><div><h4>Raspberry Pi 4</h4><p>Runs the edge transcription and orchestrates the whole kiosk.</p></div></li>
+        <li id="c3"><span class="legend__num">3</span><div><h4>Keypad</h4><p>Starts a report and lets technicians confirm or correct details.</p></div></li>
+        <li id="c4"><span class="legend__num">4</span><div><h4>Speaker</h4><p>Reads back confirmations and status prompts.</p></div></li>
+        <li id="c5"><span class="legend__num">5</span><div><h4>USB-C lavalier microphone</h4><p>Captures clear, close-range audio in noisy environments.</p></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== THE ENCLOSURE ===================== -->
+<section class="section section--light" id="enclosure">
+  <div class="section__inner">
+    <p class="eyebrow reveal">Industrial design</p>
+    <h2 class="section__title reveal">The enclosure.</h2>
+    <p class="section__lede reveal">3D-printed and modeled from scratch in OpenSCAD — designed to be wall-mounted and durable.</p>
+
+    <div class="viewer reveal">
+      <div class="viewer__stage" id="viewerStage">
+        <canvas id="viewerCanvas"></canvas>
+        <div class="viewer__hint">Drag to rotate · Scroll to zoom</div>
+        <div class="viewer__loading" id="viewerLoading">
+          <div class="spinner"></div>
+          <span>Loading 3D model…</span>
+        </div>
+        <div class="viewer__fallback" id="viewerFallback" hidden>
+          <p>Interactive viewer unavailable — showing static render instead.</p>
+        </div>
+      </div>
+      <div class="viewer__controls">
+        <div class="viewer__tabs" id="viewerTabs">
+          <button class="viewer__tab is-active" data-model="models/enclosure-base.stl">Base</button>
+          <button class="viewer__tab" data-model="models/enclosure-lid.stl">Lid</button>
+        </div>
+        <p class="viewer__note">Live STL model — <a href="models/enclosure-base.stl" download>download base</a> · <a href="models/enclosure-lid.stl" download>download lid</a></p>
+      </div>
+    </div>
+
+    <div class="gallery">
+      <figure class="gallery__item reveal">
+        <div class="media-frame" data-placeholder
+             data-filename="enclosure-render.png"
+             data-label="Enclosure — hero render">
+          <img src="images/enclosure-base-render.png" alt="SPEAKFIX enclosure base — 3D render" loading="lazy">
+        </div>
+        <figcaption>Base — houses the Pi, speaker, and cabling</figcaption>
+      </figure>
+      <figure class="gallery__item reveal">
+        <div class="media-frame" data-placeholder
+             data-filename="enclosure-lid-render.png"
+             data-label="Enclosure lid render">
+          <img src="images/enclosure-lid-render.png" alt="SPEAKFIX enclosure lid — 3D render" loading="lazy">
+        </div>
+        <figcaption>Lid — cutouts for the LCD, keypad, and mic</figcaption>
+      </figure>
+      <figure class="gallery__item reveal">
+        <div class="media-frame" data-placeholder
+             data-filename="enclosure-printed-photo.png"
+             data-label="Photo of the printed enclosure">
+          <img src="images/enclosure-printed-photo.png" alt="Photo of the 3D-printed SPEAKFIX enclosure" loading="lazy">
+        </div>
+        <figcaption>The physical print, fresh off the bed</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== BUILT WITH ===================== -->
+<section class="section section--dark" id="built-with">
+  <div class="section__inner">
+    <p class="eyebrow reveal">Under the hood</p>
+    <h2 class="section__title reveal">Built with.</h2>
+
+    <div class="stack-grid">
+      <div class="stack-card reveal" data-placeholder
+           data-filename="logo-raspberry-pi.png"
+           data-label="Raspberry Pi logo">
+        <img src="images/logo-raspberry-pi.png" alt="Raspberry Pi" loading="lazy">
+        <span class="stack-card__fallback-glyph" data-glyph="raspberrypi" hidden></span>
+        <span class="stack-card__name">Raspberry Pi</span>
+      </div>
+      <div class="stack-card reveal" data-placeholder
+           data-filename="logo-python.png"
+           data-label="Python logo">
+        <img src="images/logo-python.png" alt="Python" loading="lazy">
+        <span class="stack-card__fallback-glyph" data-glyph="python" hidden></span>
+        <span class="stack-card__name">Python</span>
+      </div>
+      <div class="stack-card reveal" data-placeholder
+           data-filename="logo-azure.png"
+           data-label="Azure logo">
+        <img src="images/logo-azure.png" alt="Microsoft Azure" loading="lazy">
+        <span class="stack-card__fallback-glyph" data-glyph="azure" hidden></span>
+        <span class="stack-card__name">Azure</span>
+      </div>
+      <div class="stack-card reveal" data-placeholder
+           data-filename="logo-microsoft-foundry.png"
+           data-label="Microsoft Foundry logo">
+        <img src="images/logo-microsoft-foundry.png" alt="Microsoft Foundry" loading="lazy">
+        <span class="stack-card__fallback-glyph" data-glyph="foundry" hidden></span>
+        <span class="stack-card__name">Microsoft Foundry</span>
+      </div>
+      <div class="stack-card reveal" data-placeholder
+           data-filename="logo-openscad.png"
+           data-label="OpenSCAD logo">
+        <img src="images/logo-openscad.png" alt="OpenSCAD" loading="lazy">
+        <span class="stack-card__fallback-glyph" data-glyph="openscad" hidden></span>
+        <span class="stack-card__name">OpenSCAD</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TEAM ===================== -->
+<section class="section section--light" id="team">
+  <div class="section__inner">
+    <p class="eyebrow reveal">Who built it</p>
+    <h2 class="section__title reveal">Team.</h2>
+    <p class="section__lede reveal">SAIT program <strong>INTP302</strong></p>
+
+    <div class="team-grid">
+      <div class="team-card reveal"><span class="team-card__initial">A</span><h3>Aryan Saini</h3></div>
+      <div class="team-card reveal"><span class="team-card__initial">A</span><h3>Anshpreet Singh</h3></div>
+      <div class="team-card reveal"><span class="team-card__initial">Z</span><h3>Zaara Ahmad</h3></div>
+      <div class="team-card reveal"><span class="team-card__initial">D</span><h3>Diego Galvis Tapasco</h3></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer" id="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">SPEAKFIX</div>
+    <a class="footer__github" href="#" data-github-link>
+      <svg viewBox="0 0 16 16" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+      <span>View source on GitHub</span>
+    </a>
+    <p class="footer__credit">Instructor: <strong>Mehdi Shokrani</strong> · SAIT INTP302</p>
+    <p class="footer__copy">© 2026 SPEAKFIX. Capstone project.</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/STLLoader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
