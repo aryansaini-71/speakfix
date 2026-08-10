@@ -92,6 +92,14 @@
       <li class="step reveal">
         <span class="step__num">04</span>
         <div class="step__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><path d="M12 6v36" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M12 8h22l-5 7 5 7H12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><circle cx="30" cy="32" r="2" fill="currentColor" stroke="none"/></svg>
+        </div>
+        <h3>Flagged for review</h3>
+        <p>If the agent's structured output sets <code>requires_human_review</code> — because details are missing or ambiguous — the ticket pauses for a quick human clarification before it moves on.</p>
+      </li>
+      <li class="step reveal">
+        <span class="step__num">05</span>
+        <div class="step__icon" aria-hidden="true">
           <svg viewBox="0 0 48 48"><rect x="8" y="8" width="24" height="30" rx="2" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M14 16h12M14 22h12M14 28h8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M30 30l7 7m0 0v-6m0 6h-6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/></svg>
         </div>
         <h3>Ticket routed to owner</h3>
@@ -199,42 +207,34 @@
     <h2 class="section__title reveal">Built with.</h2>
 
     <div class="stack-grid">
-      <div class="stack-card reveal" data-placeholder
-           data-filename="logo-raspberry-pi.png"
-           data-label="Raspberry Pi logo">
-        <img src="images/logo-raspberry-pi.png" alt="Raspberry Pi" loading="lazy">
-        <span class="stack-card__fallback-glyph" data-glyph="raspberrypi" hidden></span>
+      <div class="stack-card reveal is-loaded">
+        <img src="images/logo-raspberry-pi.svg" alt="Raspberry Pi" loading="lazy">
         <span class="stack-card__name">Raspberry Pi</span>
       </div>
-      <div class="stack-card reveal" data-placeholder
-           data-filename="logo-python.png"
-           data-label="Python logo">
-        <img src="images/logo-python.png" alt="Python" loading="lazy">
-        <span class="stack-card__fallback-glyph" data-glyph="python" hidden></span>
+      <div class="stack-card reveal is-loaded">
+        <img src="images/logo-python.svg" alt="Python" loading="lazy">
         <span class="stack-card__name">Python</span>
       </div>
       <div class="stack-card reveal" data-placeholder
-           data-filename="logo-azure.png"
-           data-label="Azure logo">
-        <img src="images/logo-azure.png" alt="Microsoft Azure" loading="lazy">
+           data-filename="logo-azure.svg"
+           data-label="Azure logo (official asset — see note below)">
+        <img src="images/logo-azure.svg" alt="Microsoft Azure" loading="lazy">
         <span class="stack-card__fallback-glyph" data-glyph="azure" hidden></span>
         <span class="stack-card__name">Azure</span>
       </div>
       <div class="stack-card reveal" data-placeholder
-           data-filename="logo-microsoft-foundry.png"
-           data-label="Microsoft Foundry logo">
-        <img src="images/logo-microsoft-foundry.png" alt="Microsoft Foundry" loading="lazy">
+           data-filename="logo-microsoft-foundry.svg"
+           data-label="Microsoft Foundry logo (official asset — see note below)">
+        <img src="images/logo-microsoft-foundry.svg" alt="Microsoft Foundry" loading="lazy">
         <span class="stack-card__fallback-glyph" data-glyph="foundry" hidden></span>
         <span class="stack-card__name">Microsoft Foundry</span>
       </div>
-      <div class="stack-card reveal" data-placeholder
-           data-filename="logo-openscad.png"
-           data-label="OpenSCAD logo">
-        <img src="images/logo-openscad.png" alt="OpenSCAD" loading="lazy">
-        <span class="stack-card__fallback-glyph" data-glyph="openscad" hidden></span>
+      <div class="stack-card reveal is-loaded">
+        <img src="images/logo-openscad.svg" alt="OpenSCAD" loading="lazy">
         <span class="stack-card__name">OpenSCAD</span>
       </div>
     </div>
+    <p class="stack-footnote reveal">Raspberry Pi, Python, and OpenSCAD marks above are their official logos. Microsoft doesn't permit third-party redistribution of the Azure / Microsoft Foundry logos, so those two show a placeholder until you add the official files yourself from <a href="https://aka.ms/azurebrand" target="_blank" rel="noopener">Microsoft's brand asset portal</a> — drop them in as <code>images/logo-azure.svg</code> and <code>images/logo-microsoft-foundry.svg</code> and they'll appear automatically.</p>
   </div>
 </section>
 

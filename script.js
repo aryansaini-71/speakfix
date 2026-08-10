@@ -198,6 +198,10 @@ function initViewer() {
   controls.autoRotateSpeed = 1.4;
   controls.minDistance = 20;
   controls.maxDistance = 800;
+  controls.screenSpacePanning = false;
+  // explicit single-finger rotate / two-finger pinch-zoom on touch devices
+  controls.touches = { ONE: THREE.TOUCH.ROTATE, TWO: THREE.TOUCH.DOLLY_PAN };
+  canvas.style.touchAction = 'none';
 
   controls.addEventListener('start', () => { controls.autoRotate = false; });
 
@@ -220,6 +224,7 @@ function initViewer() {
 
   function fitStage() {
     const w = stage.clientWidth, h = stage.clientHeight;
+    if (!w || !h) return; // stage not laid out yet (e.g. mid-transition) — skip and wait for the next observed resize
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
     renderer.setSize(w, h, false);
     camera.aspect = w / h;
