@@ -271,13 +271,30 @@ h1, h2, h3, h4, p { margin: 0; }
   background: linear-gradient(150deg, var(--near-black), #1c1c1f);
   border: 1px solid rgba(255,255,255,0.08);
 }
-.media-frame--wide { aspect-ratio: 21 / 11; }
 .media-frame--tall { aspect-ratio: 1187 / 1937; max-width: 480px; margin: 0 auto; }
 
 .media-frame img {
   width: 100%; height: 100%;
   object-fit: cover;
   display: block;
+}
+
+/* Hero kiosk shot: tall/portrait product photo. No fixed aspect-ratio box here —
+   that would force a crop. Instead give it a generous, responsive height and let
+   object-fit: contain keep the whole device visible, centered, with breathing room. */
+.media-frame--wide {
+  aspect-ratio: unset;
+  height: clamp(340px, 62vh, 660px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px;
+}
+.media-frame--wide img {
+  width: auto;
+  height: 100%;
+  max-width: 100%;
+  object-fit: contain;
 }
 
 .media-frame[data-placeholder] img { opacity: 0; transition: opacity .4s; }
@@ -741,6 +758,23 @@ h1, h2, h3, h4, p { margin: 0; }
   font-size: 1rem;
   font-weight: 700;
   letter-spacing: -0.01em;
+}
+.team-card__linkedin {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  margin-top: 14px;
+  border-radius: 50%;
+  background: rgba(28, 106, 168, 0.1);
+  color: var(--blue);
+  transition: background .25s var(--ease), color .25s var(--ease), transform .25s var(--ease);
+}
+.team-card__linkedin:hover {
+  background: var(--blue);
+  color: var(--white);
+  transform: translateY(-2px);
 }
 
 @media (max-width: 860px) {

@@ -172,6 +172,7 @@ function initViewer() {
   if (!stage || !canvas) return;
 
   const hasThree = typeof THREE !== 'undefined' && THREE.STLLoader && THREE.OrbitControls;
+  const hasGLTF = hasThree && !!THREE.GLTFLoader;
   if (!hasThree) {
     loadingEl.classList.add('is-hidden');
     fallbackEl.hidden = false;
@@ -219,8 +220,9 @@ function initViewer() {
     roughness: 0.55
   });
 
-  let currentMesh = null;
-  const loader = new THREE.STLLoader();
+  let currentObject = null;
+  const stlLoader = new THREE.STLLoader();
+  const gltfLoader = hasGLTF ? new THREE.GLTFLoader() : null;
 
   function fitStage() {
     const w = stage.clientWidth, h = stage.clientHeight;
@@ -231,40 +233,86 @@ function initViewer() {
     camera.updateProjectionMatrix();
   }
 
-  function loadModel(url) {
-    loadingEl.classList.remove('is-hidden');
-    loader.load(
-      url,
-      (geometry) => {
-        if (currentMesh) {
-          scene.remove(currentMesh);
-          currentMesh.geometry.dispose();
-        }
-        geometry.computeBoundingBox();
-        geometry.computeVertexNormals();
-        const center = new THREE.Vector3();
-        geometry.boundingBox.getCenter(center);
-        geometry.translate(-center.x, -center.y, -center.z);
-
-        const size = new THREE.Vector3();
-        geometry.boundingBox.getSize(size);
-        const maxDim = Math.max(size.x, size.y, size.z) || 1;
-        const scale = 110 / maxDim;
-        geometry.scale(scale, scale, scale);
-
-        currentMesh = new THREE.Mesh(geometry, material);
-        currentMesh.rotation.x = -Math.PI / 2; // STL is Z-up; three.js scene is Y-up
-        scene.add(currentMesh);
-
-        controls.autoRotate = true;
-        loadingEl.classList.add('is-hidden');
-      },
-      undefined,
-      () => {
-        loadingEl.classList.add('is-hidden');
-        fallbackEl.hidden = false;
+  function disposeObject3D(object) {
+    object.traverse((node) => {
+      if (node.geometry) node.geometry.dispose();
+      if (node.material) {
+        const mats = Array.isArray(node.material) ? node.material : [node.material];
+        mats.forEach((m) => {
+          Object.keys(m).forEach((propName) => {
+            const val = m[propName];
+            if (val && val.isTexture) val.dispose();
+          });
+          m.dispose();
+        });
       }
-    );
+    });
+  }
+
+  // Centers and scales any loaded object (STL mesh or GLTF scene) to a consistent
+  // on-screen size, regardless of the pivot/scale/units it arrived with.
+  function placeObject(object, { rotateZUpToYUp } = {}) {
+    if (rotateZUpToYUp) object.rotation.x = -Math.PI / 2; // STL is Z-up; three.js scene is Y-up. glTF is already Y-up per spec.
+    object.updateMatrixWorld(true);
+
+    const box = new THREE.Box3().setFromObject(object);
+    const center = new THREE.Vector3();
+    box.getCenter(center);
+    const size = new THREE.Vector3();
+    box.getSize(size);
+    const maxDim = Math.max(size.x, size.y, size.z) || 1;
+    const scale = 110 / maxDim;
+
+    // position is applied after scale in the local->world transform, so offset by
+    // the pre-scale center scaled down, not the raw center.
+    object.position.copy(center).multiplyScalar(-scale);
+    object.scale.setScalar(scale);
+  }
+
+  function showModel(object, opts) {
+    if (currentObject) {
+      scene.remove(currentObject);
+      disposeObject3D(currentObject);
+    }
+    placeObject(object, opts);
+    currentObject = object;
+    scene.add(object);
+    controls.autoRotate = true;
+    loadingEl.classList.add('is-hidden');
+  }
+
+  function onLoadError() {
+    loadingEl.classList.add('is-hidden');
+    fallbackEl.hidden = false;
+  }
+
+  function loadModel(url, type) {
+    loadingEl.classList.remove('is-hidden');
+    fallbackEl.hidden = true;
+
+    if (type === 'gltf') {
+      if (!gltfLoader) { onLoadError(); return; }
+      gltfLoader.load(
+        url,
+        (gltf) => {
+          // GLTF models carry their own per-part vertex colors / materials — use as-is.
+          showModel(gltf.scene, { rotateZUpToYUp: false });
+        },
+        undefined,
+        onLoadError
+      );
+    } else {
+      stlLoader.load(
+        url,
+        (geometry) => {
+          geometry.computeVertexNormals();
+          const mesh = new THREE.Mesh(geometry, material);
+          showModel(mesh, { rotateZUpToYUp: true });
+        },
+        undefined,
+        onLoadError
+      );
+    }
   }
 
   fitStage();
@@ -277,11 +325,12 @@ function initViewer() {
     tab.addEventListener('click', () => {
       tabs.forEach(t => t.classList.remove('is-active'));
       tab.classList.add('is-active');
-      loadModel(tab.dataset.model);
+      loadModel(tab.dataset.model, tab.dataset.type || 'stl');
     });
   });
 
-  loadModel(tabs[0] ? tabs[0].dataset.model : 'models/enclosure-base.stl');
+  const firstTab = tabs[0];
+  loadModel(firstTab ? firstTab.dataset.model : 'models/enclosure-base.stl', firstTab ? (firstTab.dataset.type || 'stl') : 'stl');
 
   (function animate() {
     requestAnimationFrame(animate);

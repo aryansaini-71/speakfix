@@ -21,7 +21,7 @@
       <a href="#built-with">Built with</a>
       <a href="#team">Team</a>
     </nav>
-    <a class="nav__github" href="#" data-github-link aria-label="View source on GitHub">
+    <a class="nav__github" href="https://github.com/Dsgalvist/vmis-manager-dashboard" target="_blank" rel="noopener" data-github-link aria-label="View source on GitHub">
       <svg viewBox="0 0 16 16" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
       <span>GitHub</span>
     </a>
@@ -45,10 +45,8 @@
   </div>
 
   <div class="hero__media reveal">
-    <div class="media-frame media-frame--wide" data-placeholder
-         data-filename="hero-kiosk.png"
-         data-label="Kiosk — full device, front-on photo">
-      <img src="images/hero-kiosk.png" alt="SPEAKFIX kiosk device, front view" loading="lazy">
+    <div class="media-frame media-frame--wide">
+      <img src="images/kiosk-final-photo.jpg" alt="SPEAKFIX kiosk device, front view" loading="lazy">
     </div>
   </div>
 
@@ -164,10 +162,11 @@
       </div>
       <div class="viewer__controls">
         <div class="viewer__tabs" id="viewerTabs">
-          <button class="viewer__tab is-active" data-model="models/enclosure-base.stl">Base</button>
-          <button class="viewer__tab" data-model="models/enclosure-lid.stl">Lid</button>
+          <button class="viewer__tab is-active" data-model="models/enclosure-base.stl" data-type="stl">Base</button>
+          <button class="viewer__tab" data-model="models/enclosure-lid.stl" data-type="stl">Lid</button>
+          <button class="viewer__tab" data-model="models/speakfix_enclosure.glb" data-type="gltf">Full color</button>
         </div>
-        <p class="viewer__note">Live STL model — <a href="models/enclosure-base.stl" download>download base</a> · <a href="models/enclosure-lid.stl" download>download lid</a></p>
+        <p class="viewer__note">Live 3D models — <a href="models/enclosure-base.stl" download>download base</a> · <a href="models/enclosure-lid.stl" download>download lid</a> · <a href="models/speakfix_enclosure.glb" download>download full-color GLB</a></p>
       </div>
     </div>
 
@@ -189,12 +188,10 @@
         <figcaption>Lid — cutouts for the LCD, keypad, and mic</figcaption>
       </figure>
       <figure class="gallery__item reveal">
-        <div class="media-frame" data-placeholder
-             data-filename="enclosure-printed-photo.png"
-             data-label="Photo of the printed enclosure">
-          <img src="images/enclosure-printed-photo.png" alt="Photo of the 3D-printed SPEAKFIX enclosure" loading="lazy">
+        <div class="media-frame">
+          <img src="images/architecture-blueprint.png" alt="SPEAKFIX system architecture blueprint — hardware layers, front panel, and cloud data flow" loading="lazy">
         </div>
-        <figcaption>The physical print, fresh off the bed</figcaption>
+        <figcaption>System architecture — from hardware to dashboard</figcaption>
       </figure>
     </div>
   </div>
@@ -246,10 +243,34 @@
     <p class="section__lede reveal">SAIT program <strong>INTP302</strong></p>
 
     <div class="team-grid">
-      <div class="team-card reveal"><span class="team-card__initial">A</span><h3>Aryan Saini</h3></div>
-      <div class="team-card reveal"><span class="team-card__initial">A</span><h3>Anshpreet Singh</h3></div>
-      <div class="team-card reveal"><span class="team-card__initial">Z</span><h3>Zaara Ahmad</h3></div>
-      <div class="team-card reveal"><span class="team-card__initial">D</span><h3>Diego Galvis Tapasco</h3></div>
+      <div class="team-card reveal">
+        <span class="team-card__initial">A</span>
+        <h3>Aryan Saini</h3>
+        <a class="team-card__linkedin" href="https://www.linkedin.com/in/aryan-saini71" target="_blank" rel="noopener" aria-label="Aryan Saini on LinkedIn">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg>
+        </a>
+      </div>
+      <div class="team-card reveal">
+        <span class="team-card__initial">A</span>
+        <h3>Anshpreet Singh</h3>
+        <a class="team-card__linkedin" href="https://www.linkedin.com/in/anshpreetsingh007/" target="_blank" rel="noopener" aria-label="Anshpreet Singh on LinkedIn">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg>
+        </a>
+      </div>
+      <div class="team-card reveal">
+        <span class="team-card__initial">Z</span>
+        <h3>Zaara Ahmad</h3>
+        <a class="team-card__linkedin" href="https://www.linkedin.com/in/zaara-ahmad-094339283/" target="_blank" rel="noopener" aria-label="Zaara Ahmad on LinkedIn">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg>
+        </a>
+      </div>
+      <div class="team-card reveal">
+        <span class="team-card__initial">D</span>
+        <h3>Diego Galvis Tapasco</h3>
+        <a class="team-card__linkedin" href="https://www.linkedin.com/in/diego-galvis-63014b2bb/" target="_blank" rel="noopener" aria-label="Diego Galvis Tapasco on LinkedIn">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg>
+        </a>
+      </div>
     </div>
   </div>
 </section>
@@ -258,7 +279,7 @@
 <footer class="footer" id="footer">
   <div class="footer__inner">
     <div class="footer__brand">SPEAKFIX</div>
-    <a class="footer__github" href="#" data-github-link>
+    <a class="footer__github" href="https://github.com/Dsgalvist/vmis-manager-dashboard" target="_blank" rel="noopener" data-github-link>
       <svg viewBox="0 0 16 16" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
       <span>View source on GitHub</span>
     </a>
@@ -269,6 +290,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/STLLoader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 <script src="script.js"></script>
 </body>
