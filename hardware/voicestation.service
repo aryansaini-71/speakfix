@@ -1,0 +1,14 @@
+[Unit]
+Description=Voice Maintenance Intake Station
+After=network.target sound.target
+
+[Service]
+Type=simple
+User=aryanraspberrypi
+WorkingDirectory=/home/aryanraspberrypi
+ExecStart=/home/aryanraspberrypi/voicestation-env/bin/python3 /home/aryanraspberrypi/launcher.py
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
