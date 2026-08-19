@@ -281,7 +281,9 @@ h1, h2, h3, h4, p { margin: 0; }
 
 /* Hero kiosk shot: tall/portrait product photo. No fixed aspect-ratio box here —
    that would force a crop. Instead give it a generous, responsive height and let
-   object-fit: contain keep the whole device visible, centered, with breathing room. */
+   object-fit: contain keep the whole device visible, centered, with breathing room.
+   The photo itself is a transparent PNG (no background), so the frame drops the
+   card background/border too — the device floats directly on the hero background. */
 .media-frame--wide {
   aspect-ratio: unset;
   height: clamp(340px, 62vh, 660px);
@@ -289,6 +291,8 @@ h1, h2, h3, h4, p { margin: 0; }
   align-items: center;
   justify-content: center;
   padding: 28px;
+  background: none;
+  border: none;
 }
 .media-frame--wide img {
   width: auto;
